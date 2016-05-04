@@ -32,7 +32,7 @@ class Property(models.Model):
     district = models.CharField(max_length=50, null=True)
     county = models.CharField(max_length=50, null=True)
 
-    type = models.CharField(max_length=1, choices=KINDS)
+    type = models.CharField(max_length=1, choices=TYPES)
     age = models.CharField(max_length=1, choices=AGES)
     duration = models.CharField(max_length=1, choices=DURATIONS)
 
@@ -45,7 +45,7 @@ class Transaction(models.Model):
     )
 
     id = models.UUIDField(primary_key=True)
-    property = Models.ForeignKey(Property)
-    price = models.DecimalField(max_digits=9)
+    property = models.ForeignKey(Property)
+    price = models.DecimalField(max_digits=9, decimal_places=0)
     category = models.CharField(max_length=1, choices=CATEGORIES)
     transfer_date = models.DateField()
