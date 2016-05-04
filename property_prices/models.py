@@ -36,6 +36,14 @@ class Property(models.Model):
     age = models.CharField(max_length=1, choices=AGES)
     duration = models.CharField(max_length=1, choices=DURATIONS)
 
+    def __unicode__(self):
+        return '{saon}\n{paon} {street}\n{town_or_city}\n{postcode}'.format(
+            paon=self.paon,
+            saon=self.saon,
+            street=self.street,
+            town_or_city=self.town_or_city,
+            postcode = self.postcode)
+
 
 class Transaction(models.Model):
 
@@ -45,7 +53,9 @@ class Transaction(models.Model):
     )
 
     id = models.UUIDField(primary_key=True)
-    property = models.ForeignKey(Property)
-    price = models.DecimalField(max_digits=9, decimal_places=0)
+    property = models.ForeignKey(Property, null=True)
+    price = models.DecimalField(max_digits=9, decimal_places=0, null=True)
     category = models.CharField(max_length=1, choices=CATEGORIES)
-    transfer_date = models.DateField()
+    transfer_date = models.DateField(null=True)
+
+    # TODO: Add a string representation of the model
