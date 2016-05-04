@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # TODO: The following hard-coded file path should be an
         # externally-specified argument
-        property_prices = pandas.read_csv('pp-sample.csv',
+        property_prices = pandas.read_csv('pp-complete.csv',
                                           header=None,
                                           names=[
                                               'transaction_id',
