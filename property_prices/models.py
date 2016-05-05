@@ -53,7 +53,7 @@ class Transaction(models.Model):
     )
 
     id = models.UUIDField(primary_key=True)
-    property = models.ForeignKey(Property, null=True)
+    property = models.ForeignKey(Property, related_name='transactions', null=True)
     price = models.DecimalField(max_digits=9, decimal_places=0, null=True)
     category = models.CharField(max_length=1, choices=CATEGORIES)
     transfer_date = models.DateField(null=True)
