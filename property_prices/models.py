@@ -23,9 +23,9 @@ class Property(models.Model):
         ('L', 'Leasehold'),
     )
 
-    paon = models.CharField(max_length=50, null=True)
-    saon = models.CharField(max_length=50, null=True)
-    street = models.CharField(max_length=50, null=True)
+    paon = models.CharField(max_length=100, null=True)
+    saon = models.CharField(max_length=100, null=True)
+    street = models.CharField(max_length=100, null=True)
     locality = models.CharField(max_length=50, null=True)
     postcode = models.CharField(max_length=10, null=True)
     town_or_city = models.CharField(max_length=50, null=True)
@@ -36,6 +36,9 @@ class Property(models.Model):
     age = models.CharField(max_length=1, choices=AGES)
     duration = models.CharField(max_length=1, choices=DURATIONS)
 
+    class Meta:
+        verbose_name_plural = 'properties'
+
     def __unicode__(self):
         return '{saon}\n{paon} {street}\n{town_or_city}\n{postcode}'.format(
             paon=self.paon,
@@ -43,6 +46,12 @@ class Property(models.Model):
             street=self.street,
             town_or_city=self.town_or_city,
             postcode = self.postcode)
+
+    def latest_price(self):
+        return self.transactions.latest('transfer_date').price
+
+    def latest_sale_date(self):
+        return self.transactions.latest('transfer_date').transfer_date
 
 
 class Transaction(models.Model):
