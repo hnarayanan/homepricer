@@ -79,7 +79,4 @@ class Command(BaseCommand):
                     category = transaction[1]['transaction_category'],
                     transfer_date = transaction[1]['transaction_transfer_date'].rstrip(' 00:00'))
 
-
-
-
             self.stdout.write(self.style.SUCCESS('Processed transaction %s' % t.id))
