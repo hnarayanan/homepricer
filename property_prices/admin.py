@@ -10,16 +10,17 @@ class TransactionInline(admin.TabularInline):
 
 class PropertyAdmin(admin.ModelAdmin):
 
-    list_display = ('__unicode__', 'latest_price', 'latest_sale_date',
+    list_display = ('__unicode__', 'latitude', 'longitude',
+                    'latest_price', 'latest_sale_date',
                     'type', 'age', 'duration')
     list_filter = ('type', 'age', 'duration',)
     search_fields = ['paon', 'saon', 'street', 'locality', 'postcode',
                     'town_or_city', 'district', 'county']
     fieldsets = (
         ('Property address', {
-            'fields': ('paon', 'saon', 'street', 'locality',
+            'fields': ('saon', 'paon', 'street', 'locality',
                        'postcode', 'town_or_city', 'district',
-                       'county')
+                       'county', 'latitude', 'longitude',)
         }),
         ('About the property', {
             'fields': ('type', 'age', 'duration'),
