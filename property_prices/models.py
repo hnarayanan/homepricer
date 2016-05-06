@@ -52,7 +52,7 @@ class Property(models.Model):
     def latest_price(self):
         return self.transactions.latest('transfer_date').price
 
-    def latest_sale_date(self):
+    def latest_transfer_date(self):
         return self.transactions.latest('transfer_date').transfer_date
 
 

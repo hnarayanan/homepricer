@@ -5,13 +5,14 @@ from .models import Property, Transaction
 class TransactionInline(admin.TabularInline):
 
     model = Transaction
+    ordering = ('-transfer_date',)
     extra = 0
 
 
 class PropertyAdmin(admin.ModelAdmin):
 
     list_display = ('__unicode__', 'latitude', 'longitude',
-                    'latest_price', 'latest_sale_date',
+                    'latest_price', 'latest_transfer_date',
                     'type', 'age', 'duration')
     list_filter = ('type', 'age', 'duration',)
     search_fields = ['paon', 'saon', 'street', 'locality', 'postcode',
