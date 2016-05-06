@@ -31,6 +31,8 @@ class Property(models.Model):
     town_or_city = models.CharField(max_length=50, null=True)
     district = models.CharField(max_length=50, null=True)
     county = models.CharField(max_length=50, null=True)
+    latitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
+    longitude = models.DecimalField(max_digits=9, decimal_places=6, null=True)
 
     type = models.CharField(max_length=1, choices=TYPES)
     age = models.CharField(max_length=1, choices=AGES)
