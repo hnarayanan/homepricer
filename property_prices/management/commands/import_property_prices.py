@@ -40,7 +40,6 @@ class Command(BaseCommand):
                                    'property_saon',
                                    'property_paon',
                                    'property_street',
-                                   'property_locality',
                                    'property_town_or_city',
                                    'property_postcode',
                                    'property_district',
@@ -51,16 +50,15 @@ class Command(BaseCommand):
                 saon=property[0],
                 paon=property[1],
                 street=property[2],
-                locality=property[3],
-                town_or_city=property[4],
-                postcode=property[5],
-                district=property[6],
-                county=property[7],
+                town_or_city=property[3],
+                postcode=property[4],
+                district=property[5],
+                county=property[6],
             )
 
             try:
-                p.latitude=postcode_locations['lat'][property[5]]
-                p.longitude=postcode_locations['long'][property[5]]
+                p.latitude=postcode_locations['lat'][property[4]]
+                p.longitude=postcode_locations['long'][property[4]]
                 p.save()
             except KeyError:
                 self.stdout.write(self.style.ERROR("Couldn't geocode postcode: %s" % p.postcode))
@@ -68,6 +66,8 @@ class Command(BaseCommand):
             for transaction in transactions.iterrows():
                 # CHECK: I think the following implicitly relies on
                 # the incoming data being sorted by date, which it is.
+                if not p.locality:
+                    p.locality = transaction[1]['property_locality']
                 p.type = transaction[1]['property_type']
                 p.age = transaction[1]['property_age']
                 p.duration = transaction[1]['property_duration']
