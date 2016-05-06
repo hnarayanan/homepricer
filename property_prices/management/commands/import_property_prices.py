@@ -57,6 +57,12 @@ class Command(BaseCommand):
             )
 
             for transaction in transactions.iterrows():
+                # CHECK: I think the following implicitly relies on
+                # the incoming data being sorted by date, which it is.
+                p.type = transaction[1]['property_type']
+                p.age = transaction[1]['property_age']
+                p.duration = transaction[1]['property_duration']
+                p.save()
                 t = Transaction.objects.create(
                     id=uuid.UUID(transaction[1]['transaction_id']),
                     property=p,
@@ -64,11 +70,7 @@ class Command(BaseCommand):
                     category = transaction[1]['transaction_category'],
                     transfer_date = transaction[1]['transaction_transfer_date'].rstrip(' 00:00'))
 
-            # TODO: Sort the transactions in ascending order by
-            # transaction_transfer_date and set the following in
-            # 'p' for the last transaction?
-            # type=row['property_type'],
-            # age=row['property_age'],
-            # duration=row['property_duration'],
+
+
 
             self.stdout.write(self.style.SUCCESS('Processed transaction %s' % t.id))
