@@ -11,6 +11,8 @@ class Command(BaseCommand):
     help = "Imports the U.K Land Registry's Price Paid Data"
 
     def handle(self, *args, **options):
+        postcode_locations = pandas.read_csv('NSPL_FEB_2016_UK.csv').set_index('pcds')
+
         # TODO: The following hard-coded file path should be an
         # externally-specified argument
         property_transactions = pandas.read_csv('pp-complete.csv',
@@ -55,6 +57,13 @@ class Command(BaseCommand):
                 district=property[6],
                 county=property[7],
             )
+
+            try:
+                p.latitude=postcode_locations['lat'][property[5]]
+                p.longitude=postcode_locations['long'][property[5]]
+                p.save()
+            except KeyError:
+                self.stdout.write(self.style.ERROR("Couldn't geocode postcode: %s" % p.postcode))
 
             for transaction in transactions.iterrows():
                 # CHECK: I think the following implicitly relies on
