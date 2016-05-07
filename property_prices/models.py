@@ -27,7 +27,7 @@ class Property(models.Model):
     saon = models.CharField(max_length=100, null=True)
     street = models.CharField(max_length=100, null=True)
     locality = models.CharField(max_length=50, null=True)
-    postcode = models.CharField(max_length=10, null=True)
+    postcode = models.CharField(max_length=10, db_index=True, null=True)
     town_or_city = models.CharField(max_length=50, null=True)
     district = models.CharField(max_length=50, null=True)
     county = models.CharField(max_length=50, null=True)
