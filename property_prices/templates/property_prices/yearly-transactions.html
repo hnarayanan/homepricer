@@ -6,7 +6,7 @@
     <style>
 
 body {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
 }
 
 .axis path,
@@ -41,7 +41,7 @@ var y = d3.scale.linear()
     .rangeRound([height, 0]);
 
 var color = d3.scale.ordinal()
-    .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    .range(["#f4bc87", "#cb6077", "#6b486b", "#d28b71", "#7bbda4"]);
 
 var xAxis = d3.svg.axis()
     .scale(x)
@@ -58,10 +58,10 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.csv("data.csv", function(error, data) {
+d3.csv("yearly-transactions.csv", function(error, data) {
   if (error) throw error;
 
-  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "State"; }));
+  color.domain(d3.keys(data[0]).filter(function(key) { return key !== "Year"; }));
 
   data.forEach(function(d) {
     var y0 = 0;
@@ -69,9 +69,7 @@ d3.csv("data.csv", function(error, data) {
     d.total = d.ages[d.ages.length - 1].y1;
   });
 
-  data.sort(function(a, b) { return b.total - a.total; });
-
-  x.domain(data.map(function(d) { return d.State; }));
+  x.domain(data.map(function(d) { return d.Year; }));
   y.domain([0, d3.max(data, function(d) { return d.total; })]);
 
   svg.append("g")
@@ -87,13 +85,13 @@ d3.csv("data.csv", function(error, data) {
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Population");
+      .text("Number of property sales");
 
   var state = svg.selectAll(".state")
       .data(data)
     .enter().append("g")
       .attr("class", "g")
-      .attr("transform", function(d) { return "translate(" + x(d.State) + ",0)"; });
+      .attr("transform", function(d) { return "translate(" + x(d.Year) + ",0)"; });
 
   state.selectAll("rect")
       .data(function(d) { return d.ages; })
