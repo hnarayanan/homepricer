@@ -7,7 +7,7 @@ class Property(models.Model):
 
     TYPES = (
         ('D', 'Detached'),
-        ('S','Semi-Detached'),
+        ('S', 'Semi-Detached'),
         ('T', 'Terraced'),
         ('F', 'Flats/Maisonettes'),
         ('O', 'Other'),
