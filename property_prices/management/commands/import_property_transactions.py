@@ -76,6 +76,6 @@ class Command(BaseCommand):
                     property=p,
                     price = transaction[1]['transaction_price'],
                     category = transaction[1]['transaction_category'],
-                    transfer_date = transaction[1]['transaction_transfer_date'].rstrip(' 00:00'))
+                    transfer_date = transaction[1]['transaction_transfer_date'].replace(' 00:00', ''))
 
             self.stdout.write(self.style.SUCCESS('Processed transaction %s' % t.id))
