@@ -11,10 +11,9 @@ class Command(BaseCommand):
     help = "Imports the U.K Land Registry's Price Paid Data"
 
     def handle(self, *args, **options):
-        postcode_locations = pandas.read_csv('NSPL_FEB_2016_UK.csv').set_index('pcds')
-
-        # TODO: The following hard-coded file path should be an
+        # TODO: The following hard-coded file paths should be an
         # externally-specified argument
+        postcode_locations = pandas.read_csv('NSPL_FEB_2016_UK.csv').set_index('pcds')
         property_transactions = pandas.read_csv('pp-complete.csv',
                                           header=None,
                                           names=[
