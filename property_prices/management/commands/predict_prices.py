@@ -38,8 +38,18 @@ class Command(BaseCommand):
         data = pandas.DataFrame()
         parse_date = lambda x: (datetime.datetime.strptime(x.replace(' 00:00', ''), '%Y-%m-%d').date() - datetime.date(1995, 01, 01)).days
         data['transfer_date'] = property_transactions['transaction_transfer_date'].map(parse_date)
-        get_latitude = lambda x: postcode_locations['lat'][x] if x else None
-        get_longitude = lambda x: postcode_locations['long'][x] if x else None
+        def get_latitude(postcode):
+            try:
+                return postcode_locations['lat'][postcode]
+            except:
+                return None
+        def get_longitude(postcode):
+            try:
+                return postcode_locations['long'][postcode]
+            except:
+                return None
+#        get_latitude = lambda x: postcode_locations['lat'][x] if x else None
+#        get_longitude = lambda x: postcode_locations['long'][x] if x else None
         data['latitude'] = property_transactions['property_postcode'].map(get_latitude)
         data['longitude'] = property_transactions['property_postcode'].map(get_longitude)
         data = pandas.concat([data, pandas.get_dummies(property_transactions['property_type'])], axis=1)
