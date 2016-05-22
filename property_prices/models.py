@@ -69,4 +69,8 @@ class Transaction(models.Model):
     category = models.CharField(max_length=1, choices=CATEGORIES)
     transfer_date = models.DateField(null=True)
 
-    # TODO: Add a string representation of the model
+    def __unicode__(self):
+        return '{date} -- {price} GBP'.format(
+            date=self.transfer_date,
+            price=self.price,
+        )
