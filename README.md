@@ -21,10 +21,14 @@ in TensorFlow.
 
 - TODO: Historical property transaction data
   - https://www.gov.uk/government/statistical-data-sets/price-paid-data-downloads
+  - http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-complete.csv
 - TODO: Postcode geocodes
   - http://geoportal.statistics.gov.uk
-  - http://ons.maps.arcgis.com/home/item.html?id=a26683d2393743f4b87c89141cd1b2e8
+  - http://ons.maps.arcgis.com/home/item.html?id=a26683d2393743f4b87c89141cd1b2e8 (and click Download)
 - TODO: Postcode geoshapes
+  - Wards (December 2014) Generalised Clipped Boundaries in Great Britain
+  - http://geoportal.statistics.gov.uk/datasets/73f28a6716d747caa32f52d9aa5e92a3_2
+  - http://geoportal.statistics.gov.uk/datasets/73f28a6716d747caa32f52d9aa5e92a3_2.geojson
 
 
 ## Usage
