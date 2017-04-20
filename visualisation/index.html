@@ -6,27 +6,15 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
-	      integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
-	      crossorigin=""/>
+	<link rel="stylesheet" href="/visualisation/styles/leaflet.css">
 	<style>
 	    #mapid { height: 800px; }
 	</style>
     </head>
     <body>
 	<div id="mapid"></div>
-	<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
-		integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
-		crossorigin=""></script>
+	<script src="/visualisation/scripts/leaflet.js"></script>
 	<script src="/data/generalised-clipped-boundaries.geojson"></script>
-	<script>
-	    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-	    L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-    id: 'hnarayanan.1a208bf6',
-    accessToken: 'pk.eyJ1IjoiaG5hcmF5YW5hbiIsImEiOiJjajFwaDF2enEwMDAxMnduejFzZjg1NnEyIn0.KlcHvt6sAtxBrVUflJLTpA'
-}).addTo(mymap);
-	    L.geoJson(wards).addTo(mymap);
-	</script>
+	<script src="/visualisation/scripts/app.js"></script>
     </body>
 </html>
