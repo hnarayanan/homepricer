@@ -33,6 +33,7 @@ class Property(models.Model):
     county = models.CharField(max_length=50, null=True)
     latitude = models.DecimalField(max_digits=9, decimal_places=6, db_index=True, null=True)
     longitude = models.DecimalField(max_digits=9, decimal_places=6, db_index=True, null=True)
+    ward = models.CharField(max_length=10, db_index=True, null=True)
 
     type = models.CharField(max_length=1, choices=TYPES)
     age = models.CharField(max_length=1, choices=AGES)

@@ -58,6 +58,7 @@ class Command(BaseCommand):
             try:
                 p.latitude=postcode_locations['lat'][property[4]]
                 p.longitude=postcode_locations['long'][property[4]]
+                p.ward=postcode_locations['ward'][property[4]]
                 p.save()
             except KeyError:
                 self.stdout.write(self.style.ERROR("Couldn't geocode postcode: %s" % p.postcode))
