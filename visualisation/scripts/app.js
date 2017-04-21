@@ -1,15 +1,17 @@
-function getColor() {
-    // TODO: This function currently returns a random colour from a
-    // set. It needs to return the actual average property price in
-    // the enclosing shape.
-    var colors = ['#800026', '#BD0026', '#E31A1C', '#FC4E2A', '#FD8D3C', '#FEB24C', '#FED976', '#FFEDA0'];
-    // var colors = ['#0c2c84', '#225ea8', '#1d91c0', '#41b6c4', '#7fcdbb', '#c7e9b4', '#edf8b1', '#ffffd9'];
-    return colors[Math.floor(Math.random() * colors.length)];
+function getColor(w) {
+    return prices[w] > 2000000 ? '#800026' :
+           prices[w] > 1000000 ? '#BD0026' :
+           prices[w] > 500000  ? '#E31A1C' :
+           prices[w] > 250000  ? '#FC4E2A' :
+           prices[w] > 100000  ? '#FD8D3C' :
+           prices[w] > 50000   ? '#FEB24C' :
+           prices[w] > 25000   ? '#FED976' :
+                                 '#FFEDA0';
 }
 
 function style(feature) {
     return {
-        fillColor: getColor(),
+        fillColor: getColor(feature.properties.wd16cd),
         weight: 0.5,
         opacity: 0.5,
         color: '#800026',

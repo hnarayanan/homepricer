@@ -20,7 +20,7 @@ class Command(BaseCommand):
         wards = postcode_locations.ward.unique()
         data = {}
         for year in years:
-            for ward in wards[0:200]:
+            for ward in wards:
 #                aggregate = Transaction.objects.filter(property__ward=ward, transfer_date__year=year).aggregate(Count('price'), Avg('price'), Max('price'), Min('price'))
                 average_price = Transaction.objects.filter(property__ward=ward, transfer_date__year=year).aggregate(Avg('price'))['price__avg']
                 data[ward] = average_price
