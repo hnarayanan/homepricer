@@ -1,0 +1,10 @@
+for property_ in Property.objects.filter(ward='E05001743'):
+    print property_
+    for transaction in property.transactions.filter(transfer_date__year='2010'):
+        print transaction
+
+for year in range(1995, 2017):
+    print Transaction.objects.filter(transfer_date__year=str(year)).aggregate(Avg('price'))
+
+for year in range(1995, 2017):
+    print Transaction.objects.filter(transfer_date__year=str(year)).count()
