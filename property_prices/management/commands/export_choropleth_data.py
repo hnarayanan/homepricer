@@ -24,4 +24,5 @@ class Command(BaseCommand):
 #                aggregate = Transaction.objects.filter(property__ward=ward, transfer_date__year=year).aggregate(Count('price'), Avg('price'), Max('price'), Min('price'))
                 average_price = Transaction.objects.filter(property__ward=ward, transfer_date__year=year).aggregate(Avg('price'))['price__avg']
                 data[ward] = average_price
-        print json.dumps(data)
+            with open('data/avg_price_{year}.json'.format(year=year), 'w') as outfile:
+                json.dump(data, outfile)
