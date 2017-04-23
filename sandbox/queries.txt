@@ -8,3 +8,6 @@ for year in range(1995, 2017):
 
 for year in range(1995, 2017):
     print Transaction.objects.filter(transfer_date__year=str(year)).count()
+
+for year in range(1995, 2017):
+    print Transaction.objects.filter(transfer_date__year=str(year), property__ward='E05000146').aggregate(Avg('price'))
