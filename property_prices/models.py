@@ -42,7 +42,7 @@ class Property(models.Model):
     class Meta:
         verbose_name_plural = 'properties'
 
-    def __unicode__(self):
+    def __str__(self):
         return '{saon}\n{paon} {street}\n{town_or_city}\n{postcode}'.format(
             paon=self.paon,
             saon=self.saon,
@@ -65,12 +65,12 @@ class Transaction(models.Model):
     )
 
     id = models.UUIDField(primary_key=True)
-    property = models.ForeignKey(Property, related_name='transactions', null=True)
+    property = models.ForeignKey(Property, related_name='transactions', null=True, on_delete=models.CASCADE)
     price = models.DecimalField(max_digits=9, decimal_places=0, null=True)
     category = models.CharField(max_length=1, choices=CATEGORIES)
     transfer_date = models.DateField(null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return '{date} -- {price} GBP'.format(
             date=self.transfer_date,
             price=self.price,
