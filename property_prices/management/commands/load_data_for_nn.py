@@ -18,8 +18,8 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
-        postcode_locations = pandas.read_csv('NSPL_MAY_2016_UK.csv').set_index('pcds')
-        property_transactions = pandas.read_csv('pp-complete.csv',
+        postcode_locations = pandas.read_csv('data/NSPL_FEB_2017_UK.csv').set_index('pcds')
+        property_transactions = pandas.read_csv('data/pp-complete.csv',
                                           header=None,
                                           names=[
                                               'transaction_id',
@@ -38,7 +38,6 @@ class Command(BaseCommand):
                                               'property_county',
                                               'transaction_category',
                                               '_record_type'
-
                                           ]).fillna('')
         # TODO: Filter by 'transaction_category'? to only account for standard payments
         data = pandas.DataFrame()
