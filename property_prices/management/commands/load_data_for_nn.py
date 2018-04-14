@@ -18,7 +18,7 @@ class Command(BaseCommand):
     """
 
     def handle(self, *args, **options):
-        postcode_locations = pandas.read_csv('data/NSPL_FEB_2017_UK.csv').set_index('pcds')
+        postcode_locations = pandas.read_csv('data/NSPL_NOV_2017_UK.csv').set_index('pcds')
         property_transactions = pandas.read_csv('data/pp-complete.csv',
                                           header=None,
                                           names=[
