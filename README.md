@@ -15,7 +15,7 @@ historical pricing data and future predictions.
 
 ### Fetch the source code and install requirements
 
-- Todo: pip requirements
+- TODO: pip requirements
 - TODO: npm requirements
 
 ### Fetch initial data from different sources
@@ -25,7 +25,9 @@ historical pricing data and future predictions.
   - http://prod.publicdata.landregistry.gov.uk.s3-website-eu-west-1.amazonaws.com/pp-complete.csv
 - TODO: Postcode geocodes (National Statistics Postcode Lookup)
   - http://geoportal.statistics.gov.uk
-  - https://ons.maps.arcgis.com/home/item.html?id=3163014b9574492ea67804a9d5728c48 (and click Download)
+  - https://ons.maps.arcgis.com/home/item.html?id=0c31adaeb0444d119b336ca00cb54efe (and click Download)
+- TODO: London borough information
+  - https://data.london.gov.uk/dataset/london-borough-profiles/resource/c1693b82-68b1-44ee-beb2-3decf17dc1f8
 - TODO: Postcode geoshapes
   - Wards (December 2014) Generalised Clipped Boundaries in Great Britain
   - http://geoportal.statistics.gov.uk/datasets/73f28a6716d747caa32f52d9aa5e92a3_2
@@ -39,7 +41,7 @@ running in the wild.
 
 ## Copyright and license
 
-Copyright (c) 2016–2017 [Harish Narayanan](https://harishnarayanan.org).
+Copyright (c) 2016–2018 [Harish Narayanan](https://harishnarayanan.org).
 
 https://www.gnu.org/licenses/agpl-3.0.en.html
 
