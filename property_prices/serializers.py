@@ -7,9 +7,11 @@ class PropertySerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Property
+        fields = '__all__'
 
 
 class TransactionSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Transaction
+        fields = '__all__'

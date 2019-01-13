@@ -13,7 +13,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # TODO: The following hard-coded file paths should be an
         # externally-specified argument
-        postcode_locations = pandas.read_csv('data/NSPL_NOV_2017_UK.csv').set_index('pcds')
+        postcode_locations = pandas.read_csv('data/NSPL_FEB_2018_UK.csv').set_index('pcds')
         property_transactions = pandas.read_csv('data/pp-complete.csv',
                                           header=None,
                                           names=[
